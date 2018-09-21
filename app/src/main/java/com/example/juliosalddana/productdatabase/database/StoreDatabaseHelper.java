@@ -6,21 +6,19 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class StoreDatabaseHelper extends SQLiteOpenHelper{
 
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
     public static final String DATABASE_NAME = "Store.db";
 
-
-
     private static final String TABLE_CREATE =
-            "CREATE TABLE " + ProductContract.ProductEntry.TABLE_NAME + "("+
-                    ProductContract.ProductEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    ProductContract.ProductEntry.COLUMN_NAME + " TEXT, " +
-                    ProductContract.ProductEntry.COLUMN_DESCRIPTION + " TEXT" +
+            "CREATE TABLE " + ProductContract.TABLE_NAME + "("+
+                    ProductContract._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    ProductContract.COLUMN_NAME + " TEXT, " +
+                    ProductContract.COLUMN_DESCRIPTION + " TEXT" +
                     ")";
 
 
     private static final String SQL_DELETE_ENTRIES =
-            "DROP TABLE IF EXISTS " + ProductContract.ProductEntry.TABLE_NAME;
+            "DROP TABLE IF EXISTS " + ProductContract.TABLE_NAME;
 
     public StoreDatabaseHelper(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -34,7 +32,8 @@ public class StoreDatabaseHelper extends SQLiteOpenHelper{
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(SQL_DELETE_ENTRIES);
-        db.execSQL(TABLE_CREATE);
+        if (newVersion > oldVersion) {
+            db.execSQL("ALTER TABLE " +  ProductContract.TABLE_NAME +   " ADD COLUMN " + ProductContract.COLUMN_IMAGE_PATH + " TEXT");
+        }
     }
 }

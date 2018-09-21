@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.juliosalddana.productdatabase">
 
+    <!--Solo pedir este permiso para dispositivos con api level 18 e inferiores-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,6 +21,21 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.activities.NewProductActivity"></activity>
+
+
+
+        <!--File provider-->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.example.juliosalddana.productdatabase.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths">
+            </meta-data>
+        </provider>
     </application>
 
 </manifest>

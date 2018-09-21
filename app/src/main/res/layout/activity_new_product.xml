@@ -4,15 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activities.MainActivity">
+    tools:context=".view.activities.MainActivity"
+    android:paddingLeft="12dp">
+
+
+
+
 
     <TextView
         android:id="@+id/tv_new_product_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/new_product"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"/>
 
+    <ImageView
+        android:id="@+id/iv_product"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_below="@id/tv_new_product_label"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="2dp"
+        android:background="@android:color/darker_gray"
+        />
+
+
+    <ImageButton
+        android:id="@+id/img_btn_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_product"
+        android:src="@android:drawable/ic_menu_camera" />
 
     <EditText
         android:id="@+id/et_product_name"
@@ -20,6 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:hint="@string/hint_product_name"
+        android:layout_toRightOf="@id/iv_product"
         android:layout_below="@+id/tv_new_product_label"/>
 
 
@@ -30,7 +55,10 @@
         android:layout_centerHorizontal="true"
         android:hint="@string/hint_product_description"
         android:maxLines="3"
+        android:layout_toRightOf="@id/iv_product"
         android:layout_below="@id/et_product_name"/>
+
+
 
     <Button
         android:id="@+id/btn_new_product"
