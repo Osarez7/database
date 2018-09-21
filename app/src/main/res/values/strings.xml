@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ProductDatabase</string>
+    <string name="save_product">Guardar</string>
+    <string name="new_product">New Product</string>
+    <string name="products_label">Productos</string>
+    <string name="add_product_label">Agregar</string>
+    <string name="hint_product_name">Nombre</string>
+    <string name="hint_product_description">Descripción</string>
+</resources>
